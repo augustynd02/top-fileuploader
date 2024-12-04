@@ -34,3 +34,10 @@ model Folder {
   user   User   @relation(fields: [userId], references: [id])
   files  File[]
 }
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt   DateTime
+}
