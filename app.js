@@ -7,6 +7,7 @@ const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('@prisma/client');
 
 const indexRouter = require('./routes/indexRouter');
+const filesRouter = require('./routes/filesRouter');
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use('/', indexRouter);
+app.use('/files', filesRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
