@@ -13,6 +13,8 @@ model User {
   password String
   files    File[]
   folders  Folder[]
+
+  @@map("user")
 }
 
 model File {
@@ -25,6 +27,8 @@ model File {
   user       User     @relation(fields: [userId], references: [id])
   folderId   Int
   folder     Folder   @relation(fields: [folderId], references: [id])
+
+  @@map("file")
 }
 
 model Folder {
@@ -33,6 +37,8 @@ model Folder {
   userId Int
   user   User   @relation(fields: [userId], references: [id])
   files  File[]
+
+  @@map("folder")
 }
 
 model Session {
@@ -40,4 +46,5 @@ model Session {
   sid       String   @unique
   data      String
   expiresAt   DateTime
+  @@map("session")
 }
