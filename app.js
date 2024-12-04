@@ -6,6 +6,8 @@ const expressSession = require('express-session');
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('@prisma/client');
 
+const indexRouter = require('./routes/indexRouter');
+
 const app = express();
 
 app.use(
@@ -37,5 +39,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use('/', indexRouter);
 
 app.listen(3000, () => console.log("Listening on port 3000..."));
