@@ -1,5 +1,5 @@
 const isAuth = (req, res, next) => {
-    if(req.user) {
+    if(req.isAuthenticated()) {
         next();
     } else {
         const err = new Error();
@@ -8,3 +8,5 @@ const isAuth = (req, res, next) => {
         next(err);
     }
 }
+
+module.exports = isAuth;
