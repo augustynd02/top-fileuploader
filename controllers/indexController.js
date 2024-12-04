@@ -19,6 +19,9 @@ const indexController = {
             }
         })
         res.redirect('/');
+    },
+    getLogin: (req, res) => {
+        res.render('pages/login');
     }
 }
 
