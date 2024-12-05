@@ -8,11 +8,26 @@ const filesController = {
    getFiles: (req, res) => {
         res.render('pages/files')
    },
-   getUpload: (req, res) => {
-    res.render('pages/upload');
+   getUpload: async (req, res) => {
+     const folders = await prisma.folder.findMany({
+          where: { userId: req.user.id}
+     })
+     console.log(folders);
+    res.render('pages/upload', { folders: folders });
    },
-   uploadFile: (req, res) => {
-        res.redirect('/');
+   uploadFile: async (req, res) => {
+     console.log(req.file);
+     const file = await prisma.file.create({
+          data: {
+               name: req.file.originalname,
+               url: req.file.path,
+               size: req.file.size,
+               userId: Number(req.user.id),
+               folderId: Number(req.body.folder)
+          }
+     })
+     console.log(file);
+     res.redirect('/');
    }
 }
 
