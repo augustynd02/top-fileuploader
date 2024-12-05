@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder <%= folder.name %></title>
+</head>
+<body>
+    <h2><%= folder.name %></h2>
+    <div>
+        <% files.forEach(file => { %>
+            <div>
+                <p><%= file.name %></p>
+                <p><%= file.url %></p>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

@@ -20,6 +20,16 @@ const foldersController = {
         })
         console.log(folder);
         res.redirect('/folders');
+    },
+    getFolderById: async (req, res) => {
+        const folder = await prisma.folder.findUnique({
+            where: { id: req.params.id }
+        })
+        const files = await prisma.file.findMany({
+            where: { folderId: req.params.id }
+        })
+        console.log(folder);
+        res.render('folder', { folder: folder, files: files });
     }
 }
 
