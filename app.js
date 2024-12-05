@@ -8,6 +8,7 @@ const { PrismaClient } = require('@prisma/client');
 
 const indexRouter = require('./routes/indexRouter');
 const filesRouter = require('./routes/filesRouter');
+const foldersRouter = require('./routes/foldersRouter');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use('/', indexRouter);
 app.use('/files', filesRouter);
+app.use('/folders', foldersRouter);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
