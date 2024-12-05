@@ -9,6 +9,13 @@
     <h1>Upload your file here:</h1>
     <form action="/files/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="file" />
+
+        <label for="folder">Choose folder</label>
+        <select name="folder" id="folder">
+            <% folders.forEach(folder => { %>
+                <option value="<%= folder.id %>"><%= folder.name %></option>
+            <% }) %>
+        </select>
         <button type="submit">Submit</button>
       </form>
 </body>
