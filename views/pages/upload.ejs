@@ -7,5 +7,9 @@
 </head>
 <body>
     <h1>Upload your file here:</h1>
+    <form action="/files/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Submit</button>
+      </form>
 </body>
 </html>
