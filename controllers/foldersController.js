@@ -18,18 +18,16 @@ const foldersController = {
                 userId: req.user.id
             }
         })
-        console.log(folder);
         res.redirect('/folders');
     },
     getFolderById: async (req, res) => {
         const folder = await prisma.folder.findUnique({
-            where: { id: req.params.id }
+            where: { id: Number(req.params.id) }
         })
         const files = await prisma.file.findMany({
-            where: { folderId: req.params.id }
+            where: { folderId: Number(req.params.id) }
         })
-        console.log(folder);
-        res.render('folder', { folder: folder, files: files });
+        res.render('pages/folder', { folder: folder, files: files });
     }
 }
 
