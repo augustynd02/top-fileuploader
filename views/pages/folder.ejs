@@ -11,7 +11,7 @@
         <% files.forEach(file => { %>
             <div>
                 <p><%= file.name %></p>
-                <p><%= file.url %></p>
+                <a href="/<%= file.url %>" download>Download file</a>
             </div>
         <% }) %>
     </div>
